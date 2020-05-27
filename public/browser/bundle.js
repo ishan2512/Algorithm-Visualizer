@@ -375,7 +375,7 @@ const getDistance = require("./getDistance");
       let tableHTML = "";
       for (let r = 0; r < this.height; r++) {
         let currentArrayRow = [];
-        let currentHTMLRow = `<tr id="row ${r}">`;
+        let currentHTMLRow = ``;
         for (let c = 0; c < this.width; c++) {
           let newNodeId = `${r}-${c}`, newNodeClass, newNode;
           if (r === Math.floor(this.height / 2) && c === Math.floor(this.width / 4)) {
@@ -391,11 +391,11 @@ const getDistance = require("./getDistance");
           }
           newNode = new Node(newNodeId, newNodeClass);
           currentArrayRow.push(newNode);
-          currentHTMLRow += `<td id="${newNodeId}" class="${newNodeClass}"></td>`;
+          currentHTMLRow += `<div style="width: 25px; height: 25px; display:inline-block;" id="${newNodeId}" class="${newNodeClass}"></div >`;
           this.nodes[`${newNodeId}`] = newNode;
         }
         this.boardArray.push(currentArrayRow);
-        tableHTML += `${currentHTMLRow}</tr>`;
+        tableHTML += `${currentHTMLRow}`;
       }
       let board = document.getElementById("board");
       board.innerHTML = tableHTML;
